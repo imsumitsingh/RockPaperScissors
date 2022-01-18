@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+   body{
+       margin: 0;
+       padding: 0;
+       height: 100vh;
+       font-family: Arial, Helvetica, sans-serif;
+   }
+    .main{
+        
+        height: 500px;
+        width: 500px;
+        position: relative;
+        background-color: rgba(0.3,0,0,0.4);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+       border-radius: 10px;
+        
+    }
+    .inner{
+        padding: 20px;
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        
+        
+
+    }
+    .sub{
+     text-align: center;
+      width: 50%;
+
+    }
+    .btn-group{
+       
+       
+        width: 100px;
+        box-sizing: border-box;
+        row-gap: 10px;
+        align-items: center;
+        height: 100px;
+        overflow-y: scroll;
+        position: relative;
+        margin: auto;
+
+       
+        
+
+    }
+    .btn-group::-webkit-scrollbar{
+        display: none;
+    }
+
+    .rock{
+        height: 80px;
+        width:80px;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: grid;
+        place-items:center;
+        color:white;
+        background-color: teal;
+        position: absolute;
+        bottom: 100px;
+        transition: 1s all;
+    }
+    .paper{
+        height: 80px;
+        width:80px;
+        padding: 5px;
+        border-radius: 5px;
+        display: grid;
+        place-items:center;
+        color:white;
+        background-color: blueviolet;
+        margin-bottom: 10px;
+         position: absolute;
+        bottom: 0px;
+        transition: 1s all;
+    }
+    .scissors{
+        height: 80px;
+        width:80px;
+        padding: 5px;
+        border-radius: 5px;
+        display: grid;
+        place-items:center;
+        color:white;
+        background-color: gray;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: -100px;
+        transition: 1s all;
+        margin: auto;
+    }
+    .r{
+        color: white;
+    }
+    label{
+        color: white;
+    }
+</style>
+</head>
+<body style="background-color:rgba(0,0,0,0.85)">
+  <div class="main">
+   <div class="inner">
+       <div class="sub" >
+           <img src="athlete.png" style="height: 50px; width: 50px;">
+       </div>
+       <div class="sub">
+        <img src="chatbot.png" style="height: 50px;width: 50px;">
+    </div>
+   </div>
+  
+   
+      
+ <div style="text-align: center;background-color: rgba(0.3,0,0,0.5);margin: auto;width: 60%;padding: 10px;border-radius: 10px;">
+    <label style="color: salmon;">Your Choice</label><br><br><br>
+    <input id="r"  class="r" type="radio" name="game"> <label>Rock</label><label> <input id="p" class="r " type="radio" name="game"> <label>Paper</label><label><input id="s" class="r " type="radio" name="game"> <label>Scissors</label>
+  <br>  <br>  <br>
+   <button class="btn">Play</button>
+</div>
+
+    <div class="inner " style="display: none;">
+    <div class="btn-group">
+        <div class="rock">
+           Rock
+        </div>
+        <div class="paper">
+           paper
+        </div>
+        <div class="scissors">
+           scissors
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <div class="rock">
+           Rock
+        </div>
+        <div class="paper">
+           paper
+        </div>
+        <div class="scissors">
+           scissors
+        </div>
+      </div>
+
+   </div>
+  
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script language="javascript">
+
+      $(document).ready(function(){
+       
+          var choice;
+          $('.btn').click(function(){
+            var bot=Math.floor(Math.random() * 3) + 1;
+              if(! $('.r').is(':checked')){
+                  alert('Choose your hero')
+return;
+              }
+              else{
+var yourchoice=$('input[name="game"]:checked').next().text();
+
+                switch(bot){
+              case 1:
+                  choice= 'Rock';
+                  break;
+                  case 2:
+                  choice= 'Paper';
+                  break;
+                  case 3:
+                  choice= 'Scissors';
+                  break;
+          }
+              }
+if(yourchoice==choice){
+    alert("Tie \nYour Choice is "+yourchoice +".\nBot Choice is "+choice);;
+    return;
+}
+              if(choice=="Rock" && yourchoice=="Scissors"){
+                alert("Bot Win \nYour Choice is "+yourchoice +".\nBot Choice is "+choice);
+                  
+              }
+              else if(choice=="Rock" && yourchoice=="Paper"){
+                alert("You Win \nYour Choice is "+yourchoice +".\nBot Choice is "+choice);
+               
+              }
+              else if(choice=="Scissors" && yourchoice=="Rock"){
+                alert("You Win \nYour Choice is "+yourchoice +".\nBot Choice is "+choice);
+                return;
+              }
+              else{
+                alert("Bot Win \nYour Choice is "+yourchoice +".\nBot Choice is "+choice);
+              }
+    
+              $('input[name="game"]').prop('checked',false)
+
+          })
+         
+
+         
+     
+      })
+  
+
+    </script>
+</body>
+</html>
